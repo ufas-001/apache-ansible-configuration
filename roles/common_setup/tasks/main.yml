@@ -1,0 +1,18 @@
+# common_setup/tasks/main.yml
+---
+- name: Update packages
+  apt:
+    update_cache: yes
+  when: update_packages
+
+- name: Install essential utilities
+  package:
+    name: "{{ essential_packages }}"
+  when: ansible_os_family == "Debian" or ansible_os_family == "RedHat"
+
+- name: Configure the firewall
+  ufw:
+    rule: allow
+    port: "{{ item }}"
+    state: enabled
+  loop: "{{ firewall_ports }}"

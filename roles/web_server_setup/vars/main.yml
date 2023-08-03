@@ -1,0 +1,8 @@
+# web_server_setup/vars/main.yml
+---
+# Variables for web server setup
+web_server_package: apache2
+web_server_service_name: apache2
+web_server_virtual_host_template: basic_virtual_host.conf.j2
+web_server_port: 80
+apache_log_dir: /var/log/apache2

@@ -1,0 +1,7 @@
+# app_deployment/vars/main.yml
+---
+# Variables for application deployment
+app_source_dir: /var/www/myapp
+web_server_service_name: apache2
+web_server_port: 80
+apache_log_dir: /var/log/apache2

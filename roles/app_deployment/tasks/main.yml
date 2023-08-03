@@ -1,0 +1,23 @@
+---
+- name: Clone the application code from Git
+  git:
+    repo: https://github.com/ufas-001/genkay_landing_page.git
+    dest: "{{ app_source_dir }}"
+  tags:
+    - deploy
+- name: Ensure Web Server is running and enabled
+  service:
+    name: "{{ web_server_service_name }}"
+    state: started
+    enabled: yes
+- name: Configure the virtual host for the application
+  template:
+    src: templates/application_virtual_host.conf.j2
+    dest: "/etc/apache2/sites-available/000-default.conf"
+  tags:
+    - deploy
+- name: Ensure Web Server is running and enabled
+  service:
+    name: "{{ web_server_service_name }}"
+    state: reloaded
+    enabled: yes

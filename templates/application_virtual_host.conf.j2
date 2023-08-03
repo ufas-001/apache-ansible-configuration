@@ -1,0 +1,13 @@
+<VirtualHost *:{{ web_server_port }}>
+    ServerAdmin webmaster@localhost
+    DocumentRoot {{ app_source_dir }}
+
+    ErrorLog {{ apache_log_dir }}/error.log
+    CustomLog {{ apache_log_dir }}/access.log combined
+
+    <Directory {{ app_source_dir }}>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+</VirtualHost>

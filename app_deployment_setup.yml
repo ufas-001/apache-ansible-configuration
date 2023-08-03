@@ -1,0 +1,9 @@
+---
+- name: Deploy Web Application
+  hosts: ec2-instances
+  become: true
+
+  roles:
+    - common_setup
+    - web_server_setup
+    - app_deployment

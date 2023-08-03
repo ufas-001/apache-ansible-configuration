@@ -1,0 +1,13 @@
+# common_setup/vars/main.yml
+---
+# Variables for common setup
+update_packages: true
+essential_packages:
+  - nano
+  - wget
+  - curl
+  - unzip
+firewall_ports:
+  - 22  # SSH
+  - 80  # HTTP
+  - 443 # HTTPS
